@@ -1,3 +1,3 @@
 package com.shop.product.model;
 
-public record Product (int uuid, String product, double price) {}
+public record Product (String uuid, String product, double price) {}
