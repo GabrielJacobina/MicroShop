@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: payment
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: rabbitmq
+    password: rabbitmq
+    virtual-host: /
+
+server:
+  port: 8084
+  servlet:
+    context-path: /payment
+
+queue:
+  payment:
+    name: payment_queue
+  order:
+    name: order_queue
+
+exchange:
+  payment:
+    name: payment_ex
