@@ -34,6 +34,11 @@ public class OrderService implements IOrderService {
         notifyOrderCreated(order);
     }
 
+    @Override
+    public void updateOrder(Order order) {
+        saveOrder(order);
+    }
+
     private void notifyOrderCreated(Order order) {
         rabbitTemplate.convertAndSend(exchangeOrderName, "", order);
     }

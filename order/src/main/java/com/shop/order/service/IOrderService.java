@@ -5,4 +5,6 @@ import com.shop.order.model.Order;
 public interface IOrderService {
 
     void createOrder(Order order);
+
+    void updateOrder(Order order);
 }

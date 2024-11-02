@@ -23,7 +23,18 @@ queue:
     name: checkout_queue
   order:
     name: order_queue
+  payment:
+    name: payment_queue
 
 exchange:
   order:
     name: order_ex
+
+logging:
+  level:
+    root: INFO
+    com:
+      shop:
+        order: DEBUG
+  file:
+    name: order.log
