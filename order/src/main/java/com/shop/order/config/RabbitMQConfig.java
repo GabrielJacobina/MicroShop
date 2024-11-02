@@ -14,6 +14,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMQConfig {
 
+    @Value("${queue.checkout.name}")
+    private String queueCheckoutName;
 
     @Value("${queue.order.name}")
     private String queueOrderName;

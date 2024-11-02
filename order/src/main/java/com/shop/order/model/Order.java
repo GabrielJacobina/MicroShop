@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,7 +16,7 @@ import java.time.LocalDateTime;
 public class Order implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private String uuid;
+    private UUID uuid;
     private String name;
     private String email;
     private String phone;
