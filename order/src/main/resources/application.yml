@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: order
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: rabbitmq
+    password: rabbitmq
+    virtual-host: /
+
+server:
+  port: 8086
+  servlet:
+    context-path: /order
+
+
+queue:
+  checkout:
+    name: checkout_queue
+  order:
+    name: order_queue
+
+exchange:
+  order:
+    name: order_ex
