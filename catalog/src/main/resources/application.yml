@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: product
+
+server:
+  port: 8080
+  servlet:
+    context-path: /catalog
+
+api:
+  product: http://localhost:8081/products
