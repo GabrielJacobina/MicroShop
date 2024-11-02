@@ -4,14 +4,10 @@ import com.shop.order.model.Order;
 import com.shop.order.service.IOrderService;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class MessageListener {
-
-    @Value("${queue.checkout.name}")
-    private String queueCheckoutName;
 
     @Autowired
     private IOrderService orderService;

@@ -1,6 +1,7 @@
 package com.shop.order.service;
 
 import com.shop.order.model.Order;
+import com.shop.order.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,11 +16,13 @@ public class OrderService implements IOrderService {
 
     private final RabbitTemplate rabbitTemplate;
 
+    private final OrderRepository orderRepository;
+
     @Value("${exchange.order.name}")
     private String exchangeOrderName;
 
-    private void saveOrder(Order order) {
-
+    private Order saveOrder(Order order) {
+        return orderRepository.save(order);
     }
 
     @Override
