@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class OrderService implements IOrderService {
+public class CheckoutService implements ICheckoutService {
 
     private final ProductClient productClient;
 
