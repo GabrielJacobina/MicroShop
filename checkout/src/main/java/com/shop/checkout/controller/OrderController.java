@@ -35,6 +35,7 @@ public class OrderController {
         System.out.println("email: " + order.getEmail());
         System.out.println("Telefone: " + order.getPhone());
         System.out.println("Product ID: " + order.getProductId());
+        orderService.saveOrder(order);
         return "redirect:/" + order.getProductId();
     }
 }

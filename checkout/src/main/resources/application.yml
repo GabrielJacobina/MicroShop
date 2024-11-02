@@ -1,6 +1,12 @@
 spring:
   application:
     name: checkout
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: rabbitmq
+    password: rabbitmq
+    virtual-host: /
 
 server:
   port: 8082
@@ -9,3 +15,12 @@ server:
 
 api:
   product: http://localhost:8081/products
+
+
+queue:
+  checkout:
+    name: checkout_queue
+
+exchange:
+  checkout:
+    name: checkout_ex
