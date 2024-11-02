@@ -2,32 +2,32 @@ package com.shop.catalog.service;
 
 import com.shop.catalog.client.ProductClient;
 import com.shop.catalog.model.Product;
-import com.shop.catalog.model.Products;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
+@RequiredArgsConstructor
 public class CatalogService implements ICatalogService {
-    private Products products;
 
-    @Autowired
-    private ProductClient productClient;
+    private final ProductClient productClient;
 
-    private void loadProducts() {
-       this.products = productClient.getProducts();
+    private List<Product> loadProducts() {
+       return productClient.getProducts();
+    }
+
+    private Product loadProduct(String uuid) {
+        return productClient.getProductById(uuid);
     }
 
     @Override
-    public Products getProdutos() {
-        this.loadProducts();
-        return products;
+    public List<Product> getProdutos() {
+        return this.loadProducts();
     }
 
     @Override
     public Product getProductById(String uuid) {
-        return products.products().stream()
-                .filter(product -> product.uuid().equals(uuid))
-                .findFirst()
-                .orElse(null);
+        return this.loadProduct(uuid);
     }
 }

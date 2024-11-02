@@ -9,7 +9,7 @@
 
 <table>
     <tbody>
-    <tr th:each="product : ${products.products()}">
+    <tr th:each="product : ${products}">
         <td th:text="${product.product} + ' - R$ ' + ${product.price}"></td>
     </tr>
     </tbody>

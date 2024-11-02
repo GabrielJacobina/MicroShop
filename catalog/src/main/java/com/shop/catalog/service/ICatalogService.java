@@ -1,11 +1,12 @@
 package com.shop.catalog.service;
 
 import com.shop.catalog.model.Product;
-import com.shop.catalog.model.Products;
+
+import java.util.List;
 
 public interface ICatalogService {
 
-    Products getProdutos();
+    List<Product> getProdutos();
 
     Product getProductById(String uuid);
 }
