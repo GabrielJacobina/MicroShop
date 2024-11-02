@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Finalizar compra</title>
+</head>
+<body>
+
+<h1>Finalizar compra</h1>
+
+<h2 th:text="${product.product}"></h2>
+<h3 th:text="${product.price}"></h3>
+
+
+<form action="#" th:action="@{/submit}" th:object="${order}" method="post">
+    <input type="hidden" id="productId" th:field="*{productId}" th:value="${product.uuid}"/>
+    <label for="name">Name:</label>
+    <input type="text" id="name" th:field="*{name}" />
+    <br/>
+    <label for="email">Email:</label>
+    <input type="text" id="email" th:field="*{email}" />
+    <br/>
+    <label for="phone">Telefone:</label>
+    <input type="text" id="phone" th:field="*{phone}" />
+    <br/>
+    <button type="submit">Enviar</button>
+</form>
+
+
+</body>
+</html>

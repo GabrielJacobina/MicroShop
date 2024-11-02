@@ -1,11 +1,11 @@
 spring:
   application:
-    name: catalog
+    name: checkout
 
 server:
-  port: 8080
+  port: 8082
   servlet:
-    context-path: /catalog
+    context-path: /checkout
 
 api:
   product: http://localhost:8081/products
