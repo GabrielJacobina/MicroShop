@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shop.order.model.Order;
 import com.shop.order.service.IOrderService;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,14 +13,15 @@ import org.springframework.stereotype.Component;
 import org.slf4j.Logger;
 
 
+@RequiredArgsConstructor
 @Component
 public class MessageListener {
 
     private static final Logger logger = LoggerFactory.getLogger(MessageListener.class);
-    ObjectMapper objectMapper = new ObjectMapper();
 
-    @Autowired
-    private IOrderService orderService;
+    private final ObjectMapper objectMapper;
+
+    private final IOrderService orderService;
 
     @RabbitListener(queues = "${queue.checkout.name}")
     public void receiveMessageCheckout(Order order) throws JsonProcessingException {
