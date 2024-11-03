@@ -8,4 +8,4 @@ server:
     context-path: /catalog
 
 api:
-  product: http://localhost:8081/products
+  product: ${PRODUCT_URL}/products

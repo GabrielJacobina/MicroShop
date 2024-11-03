@@ -4,9 +4,9 @@ spring:
   rabbitmq:
     host: localhost
     port: 5672
-    username: rabbitmq
-    password: rabbitmq
-    virtual-host: /
+    username: ${RABBITMQ_DEFAULT_USER}
+    password: ${RABBITMQ_DEFAULT_PASS}
+    virtual-host: ${RABBITMQ_DEFAULT_VHOST}
 
 server:
   port: 8082
@@ -14,7 +14,7 @@ server:
     context-path: /checkout
 
 api:
-  product: http://localhost:8081/products
+  product: ${PRODUCT_URL}/products
 
 
 queue:
