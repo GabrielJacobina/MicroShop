@@ -15,8 +15,6 @@ spec:
       containers:
         - name: order
           image: gabrieljacobina/microservice-order
-          command: ["./order"]
-          args: ["-opt", "checkout"]
           ports:
             - containerPort: 6572
           env:
@@ -33,7 +31,9 @@ spec:
             - name: RABBITMQ_DEFAULT_HOST
               value: "rabbitmq-service"
             - name: REDIS_HOST
-              value: "redis-service:6379"
+              value: "redis-service"
+            - name: REDIS_PORT
+              value: "6379"
 
 ---
 

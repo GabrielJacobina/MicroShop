@@ -2,15 +2,15 @@ spring:
   application:
     name: order
   rabbitmq:
-    host: localhost
+    host: ${RABBITMQ_DEFAULT_HOST}
     port: 5672
     username: ${RABBITMQ_DEFAULT_USER}
     password: ${RABBITMQ_DEFAULT_PASS}
     virtual-host: ${RABBITMQ_DEFAULT_VHOST}
   data:
     redis:
-      host: localhost
-      port: 6379
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
 
 server:
   port: 8083
