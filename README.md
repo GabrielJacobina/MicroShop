@@ -36,38 +36,38 @@ MicroShop é uma aplicação projetada para operações de e-commerce, engloband
 
 ## Como Executar
 1. **Clone o repositório:**
-   \`\`\`bash
+   ```bash
    git clone https://github.com/GabrielJacobina/MicroShop
    cd MicroShop
-   \`\`\`
+   ```
 
 2. **Construir os microserviços:**
-   \`\`\`bash
+   ```bash
    mvn clean package
-   \`\`\`
+   ```
 
 3. **Dockerizar as aplicações:**
-   \`\`\`bash
+   ```bash
    docker-compose build
-   \`\`\`
+   ```
 
 4. **Subir os serviços locais com Docker Compose (opcional para testes locais):**
-   \`\`\`bash
+   ```bash
    docker-compose up
-   \`\`\`
+   ```
 
 5. **Implantar no Kubernetes:**
     - Verifique se o cluster Kubernetes está configurado e em execução.
     - Aplique os manifests Kubernetes:
-      \`\`\`bash
-      kubectl apply -f k8s/
-      \`\`\`
+      ```bash
+      kubectl apply -f Kubernetes/
+      ```
 
 6. **Verificar os pods e serviços em execução:**
-   \`\`\`bash
+   ```bash
    kubectl get pods
    kubectl get services
-   \`\`\`
+   ```
 
 ## Estrutura dos Microserviços
 1. **Catalog Service**: Gerencia produtos e categorias.
