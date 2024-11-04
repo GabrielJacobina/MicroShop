@@ -13,3 +13,79 @@ services:
     image: 'redis:latest'
     ports:
       - "6379:6379"
+
+  product-service:
+    image: gabrieljacobina/product-service:latest
+    container_name: product-service
+    build:
+      context: ../product
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+
+  catalog-service:
+    image: gabrieljacobina/catalog-service:latest
+    container_name: catalog-service
+    build:
+      context: ../catalog
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"  # Mapeamento da porta da aplicação
+    environment:
+      - PRODUCT_URL=product-service:8081
+    depends_on:
+      - product-service
+
+  checkout-service:
+    image: gabrieljacobina/checkout-service:latest
+    container_name: checkout-service
+    build:
+      context: ../checkout
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+    environment:
+      - RABBITMQ_DEFAULT_HOST=rabbit
+      - RABBITMQ_DEFAULT_USER=rabbitmq
+      - RABBITMQ_DEFAULT_PASS=rabbitmq
+      - RABBITMQ_DEFAULT_VHOST=/
+      - PRODUCT_URL=product-service:8081
+    depends_on:
+      - rabbit
+      - product-service
+
+  order-service:
+    image: gabrieljacobina/order-service:latest
+    container_name: order-service
+    build:
+      context: ../order
+      dockerfile: Dockerfile
+    ports:
+      - "8083:8083"
+    environment:
+      - RABBITMQ_DEFAULT_HOST=rabbit
+      - RABBITMQ_DEFAULT_USER=rabbitmq
+      - RABBITMQ_DEFAULT_PASS=rabbitmq
+      - RABBITMQ_DEFAULT_VHOST=/
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - rabbit
+      - redis
+      - checkout-service
+
+  payment-service:
+    image: gabrieljacobina/payment-service:latest
+    container_name: payment-service
+    build:
+      context: ../payment
+      dockerfile: Dockerfile
+    ports:
+      - "8084:8084"
+    environment:
+      - RABBITMQ_DEFAULT_HOST=rabbit
+      - RABBITMQ_DEFAULT_USER=rabbitmq
+      - RABBITMQ_DEFAULT_PASS=rabbitmq
+      - RABBITMQ_DEFAULT_VHOST=/
+    depends_on:
+      - rabbit
