@@ -38,3 +38,15 @@ logging:
         order: DEBUG
   file:
     name: order.log
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+  endpoint:
+    metrics:
+      enabled: true
+    health:
+      show-details: always

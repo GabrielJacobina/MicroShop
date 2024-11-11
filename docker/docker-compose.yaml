@@ -89,3 +89,10 @@ services:
       - RABBITMQ_DEFAULT_VHOST=/
     depends_on:
       - rabbit
+
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - "./prometheus.yml:/etc/prometheus/prometheus.yml"
+    ports:
+      - 9090:9090
