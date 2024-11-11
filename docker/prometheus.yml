@@ -1,8 +1,24 @@
 scrape_configs:
-  - job_name: 'FinanceMetrics'
+  - job_name: 'OrderMetrics'
     metrics_path: '/order/actuator/prometheus'
     scrape_interval: 3s
     static_configs:
       - targets: ['host.docker.internal:8083']
         labels:
-          application: 'My Finance Application'
+          application: 'Order Application'
+
+  - job_name: 'CatalogMetrics'
+    metrics_path: '/catalog/actuator/prometheus'
+    scrape_interval: 3s
+    static_configs:
+      - targets: [ 'host.docker.internal:8080' ]
+        labels:
+          application: 'Catalog Application'
+
+  - job_name: 'PaymentMetrics'
+    metrics_path: '/payment/actuator/prometheus'
+    scrape_interval: 3s
+    static_configs:
+      - targets: [ 'host.docker.internal:8084' ]
+        labels:
+          application: 'Payment Application'

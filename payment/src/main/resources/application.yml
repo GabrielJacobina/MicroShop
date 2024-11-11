@@ -22,3 +22,15 @@ queue:
 exchange:
   payment:
     name: payment_ex
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+  endpoint:
+    metrics:
+      enabled: true
+    health:
+      show-details: always

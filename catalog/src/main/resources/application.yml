@@ -9,3 +9,15 @@ server:
 
 api:
   product: ${PRODUCT_URL}/products
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+  endpoint:
+    metrics:
+      enabled: true
+    health:
+      show-details: always
