@@ -16,7 +16,7 @@ spec:
         - name: payment
           image: gabrieljacobina/microservice-payment
           ports:
-            - containerPort: 6572
+            - containerPort: 8084
           env:
             - name: PRODUCT_URL
               value: "http://product-service:8081"
@@ -43,6 +43,6 @@ spec:
   type: ClusterIP
   ports:
     - protocol: TCP
-      port: 6572
+      port: 8084
   selector:
     app: payment

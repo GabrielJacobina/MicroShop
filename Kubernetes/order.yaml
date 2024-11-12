@@ -16,7 +16,7 @@ spec:
         - name: order
           image: gabrieljacobina/microservice-order
           ports:
-            - containerPort: 6572
+            - containerPort: 8083
           env:
             - name: PRODUCT_URL
               value: "http://product-service:8081"
@@ -47,6 +47,6 @@ spec:
   type: ClusterIP
   ports:
     - protocol: TCP
-      port: 6572
+      port: 8083
   selector:
     app: order
